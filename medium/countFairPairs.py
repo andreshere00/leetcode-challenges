@@ -1,9 +1,26 @@
 ## Time Complexity: O(n^2)
 
-from utils.utils import timeit
+def lower_bound(nums, target, start):
+    end = len(nums)
+    while start < end:
+        mid = (start + end) // 2
+        if nums[mid] < target:
+            start = mid + 1
+        else:
+            end = mid
+    return start
+
+def upper_bound(nums, target, start):
+    end = len(nums)
+    while start < end:
+        mid = (start + end) // 2
+        if nums[mid] > target:
+            end = mid
+        else:
+            start = mid + 1
+    return start
 
 class Solution(object):
-    @timeit()
     def countFairPairs(self, nums, lower, upper):
         """
         :type nums: List[int]
@@ -16,18 +33,14 @@ class Solution(object):
         self.lower = lower
         self.upper = upper
 
-        result = list()
-        cont = 0
-        for num in self.nums:
-            number = [num] * cont
-            aux = list(zip(number, self.nums[0:cont]))
-            for elem in aux:
-                sum = elem[0] + elem[1]
-                tup = (elem[0], elem[1]) if elem[0] < elem[1] else (elem[1], elem[0])
-                if sum >= self.lower and sum <= self.upper:
-                    result.append(tup) 
-            cont += 1
-        return len(result)
+        self.nums.sort()
+        count = 0
+        
+        for i in range(len(self.nums)):
+            left = lower_bound(self.nums, lower - nums[i], i + 1)
+            right = upper_bound(self.nums, upper - nums[i], i + 1)
+            count += right - left
+        return count
     
 sol = Solution()
 nums = [0,1,7,4,4,5]; lower = 3; upper = 6
