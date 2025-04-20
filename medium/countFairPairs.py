@@ -1,4 +1,4 @@
-## Time Complexity: O(n^2)
+## Time Complexity: O(n*log(n))
 
 def lower_bound(nums, target, start):
     end = len(nums)
@@ -35,7 +35,7 @@ class Solution(object):
 
         self.nums.sort()
         count = 0
-        
+
         for i in range(len(self.nums)):
             left = lower_bound(self.nums, lower - nums[i], i + 1)
             right = upper_bound(self.nums, upper - nums[i], i + 1)
