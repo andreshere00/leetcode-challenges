@@ -1,4 +1,9 @@
+## Time Complexity: O(n^2)
+
+from utils.utils import timeit
+
 class Solution(object):
+    @timeit()
     def countFairPairs(self, nums, lower, upper):
         """
         :type nums: List[int]
