@@ -1,3 +1,5 @@
+# Complexity: O(n)
+
 class Solution(object):
     def twoSum(self, nums, target):
         """

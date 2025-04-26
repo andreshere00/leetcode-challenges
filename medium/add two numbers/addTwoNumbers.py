@@ -1,4 +1,5 @@
 # TODO: Still is not completely right
+# Complexity: O(n)
 
 class ListNode:
     def __init__(self, val=0, next=None):

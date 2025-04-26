@@ -1,2 +1,2 @@
-# leetcode-challenges
-Some challenges solved by me for LeetCode Challenges
+# Leetcode Challenges
+Some challenges solved by me for LeetCode Challenges.
